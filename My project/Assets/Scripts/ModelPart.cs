@@ -9,6 +9,7 @@ public class ModelPart : MonoBehaviour
     private MeshRenderer meshRenderer;
     private CinemachineVirtualCamera zoomCamera;
 
+
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -19,5 +20,15 @@ public class ModelPart : MonoBehaviour
     {
         meshRenderer.material = partSelectedMaterial;
         zoomCamera.Priority = 11;
+    }
+
+    public void DeselectPart()
+    {
+        zoomCamera.Priority = 1;
+
+        if(meshRenderer.material.name == partSelectedMaterial.name + " (Instance)")
+        {
+            meshRenderer.material = partBaseMaterial;
+        }
     }
 }
