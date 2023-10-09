@@ -4,10 +4,10 @@ using UnityEngine;
 public class ModelPart : MonoBehaviour
 {
     [SerializeField] private Material partSelectedMaterial;
-    [SerializeField] private Material partBaseMaterial;
 
     private MeshRenderer meshRenderer;
     private CinemachineVirtualCamera zoomCamera;
+    private Material currMaterial;
 
 
     private void Awake()
@@ -18,6 +18,7 @@ public class ModelPart : MonoBehaviour
 
     public void PartSelected()
     {
+        currMaterial = meshRenderer.material;
         meshRenderer.material = partSelectedMaterial;
         zoomCamera.Priority = 11;
     }
@@ -25,16 +26,13 @@ public class ModelPart : MonoBehaviour
     public void DeselectPart()
     {
         zoomCamera.Priority = 1;
-
-        if(meshRenderer.material.name == partSelectedMaterial.name + " (Instance)")
-        {
-            meshRenderer.material = partBaseMaterial;
-        }
+        meshRenderer.material = currMaterial;
     }
 
 
     public void SetMaterial(Material mat)
     {
         meshRenderer.material = mat;
+        currMaterial = mat;
     }
 }
