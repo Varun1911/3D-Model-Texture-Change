@@ -322,3 +322,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partSelectedMaterial: {fileID: 2100000, guid: 7f2e436d8a03b7d4e88c16ac50bd033c,
     type: 2}
+  textures:
+  - {fileID: 2100000, guid: 1a025864ad1aeec48ad639d4f7def691, type: 2}
+  - {fileID: 2100000, guid: bcc95c8864e8cd444aac03fe2476fc4f, type: 2}
+  - {fileID: 2100000, guid: 9a5d0a9128ea7bd4e8f715809d9e0a35, type: 2}
+  - {fileID: 2100000, guid: af67f1e78b34d064680ee097ddcc8a5a, type: 2}
+  - {fileID: 2100000, guid: 52a64979530e4164abb96853a9504a49, type: 2}
+  - {fileID: 2100000, guid: b800ee685a8d1fa44b8d458a6c3765c1, type: 2}
+  - {fileID: 2100000, guid: 0d8a9aaec7cd4bb458ac4f2593f52e01, type: 2}
+  - {fileID: 2100000, guid: fe0ac082a28e0414dac90528432bdb05, type: 2}
+  - {fileID: 2100000, guid: 2a4b0327fc88aa64f89e740ad6a2a3b9, type: 2}
+  - {fileID: 2100000, guid: d0830988764318e4bb6165064113a02d, type: 2}
+  - {fileID: 2100000, guid: be42f0d9fe2a4a442a610cdb3b98561d, type: 2}

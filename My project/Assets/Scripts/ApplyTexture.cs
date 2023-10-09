@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ApplyTexture : MonoBehaviour
 {
@@ -20,8 +21,14 @@ public class ApplyTexture : MonoBehaviour
 
     public void ApplyTextureToSelectedPart()
     {
-        int pressedButtonNum = int.Parse(EventSystem.current.currentSelectedGameObject.transform.parent.name.Replace("Texture " , string.Empty));
-        currentPart.SetMaterial(textures[pressedButtonNum - 1]);
+        string selectedMaterialName = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name + " Material";
+        for(int i = 0; i< textures.Length; i++)
+        {
+            if(textures[i].name == selectedMaterialName)
+            {
+                currentPart.SetMaterial(textures[i]);
+            }
+        }
     }
 
 
