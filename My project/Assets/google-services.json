@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "150660110372",
+    "firebase_url": "https://d-model-texture-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "d-model-texture",
+    "storage_bucket": "d-model-texture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150660110372:android:8fba4c343140972cb7a0b1",
+        "android_client_info": {
+          "package_name": "com.DigitalJalebi.ModelTexture3D"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDMBULSXOfDIE6gyXazxte_z5UdAKeH5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
