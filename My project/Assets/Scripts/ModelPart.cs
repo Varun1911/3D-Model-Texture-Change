@@ -31,4 +31,10 @@ public class ModelPart : MonoBehaviour
             meshRenderer.material = partBaseMaterial;
         }
     }
+
+
+    public void SetMaterial(Material mat)
+    {
+        meshRenderer.material = mat;
+    }
 }
