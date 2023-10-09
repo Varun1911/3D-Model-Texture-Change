@@ -2,6 +2,7 @@ using Firebase.Database;
 using UnityEngine;
 using Firebase;
 using System.Net.NetworkInformation;
+using Firebase.Extensions;
 
 public class DatabaseManager : MonoBehaviour
 {
@@ -34,5 +35,28 @@ public class DatabaseManager : MonoBehaviour
             }
         }
         return result;
+    }
+
+
+    public void SaveData()
+    {
+        reference.Child("Users").Child("User1").Child("MacAddress").SetValueAsync(UserMacAddress);
+    }
+
+
+    public void LoadData()
+    {
+        FirebaseDatabase.DefaultInstance.GetReference("Users").GetValueAsync().ContinueWithOnMainThread(task => {
+          if (task.IsFaulted)
+          {
+              // Handle the error...
+          }
+          else if (task.IsCompleted)
+          {
+                DataSnapshot snapshot = task.Result;
+                snapshot.Child("User1").Child("MacAddress").GetValue(true);
+              // Do something with snapshot...
+          }
+      });
     }
 }

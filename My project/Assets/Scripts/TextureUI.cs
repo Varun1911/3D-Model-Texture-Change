@@ -66,7 +66,6 @@ public class TextureUI : MonoBehaviour
 
 
         currentPart.DeselectPart();
-        OnPartDeselect?.Invoke();
     }
 
 
@@ -74,6 +73,7 @@ public class TextureUI : MonoBehaviour
     private void ResetScrollPanel()
     {
         panelRectTransform.anchoredPosition = Vector2.zero;   //resetting position of scroll rect
+        OnPartDeselect?.Invoke();
     }
 
 
