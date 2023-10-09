@@ -39,16 +39,6 @@ public class PartTextures
     }
 }
 
-
-// The Database will be saved as 
-//   User
-//   |- {userMacAddress}
-//       |- macAddress
-//       |- textures
-//           |- cube1
-//           |- cube2
-//           |- ...
-
 public class DatabaseManager : MonoBehaviour
 {
     private DatabaseReference reference;
@@ -60,23 +50,18 @@ public class DatabaseManager : MonoBehaviour
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
-            if (task.IsCompleted)
-            {
-                FirebaseApp app = FirebaseApp.DefaultInstance;
-                reference = FirebaseDatabase.DefaultInstance.RootReference;
-
-                // Initialize userMacAddress here
-                userMacAddress = GetMacAddress();
-
-                // Load user data
-                StartCoroutine(LoadUserData());
-            }
-            else
-            {
-                Debug.LogError("Firebase initialization failed: " + task.Exception);
-            }
+            FirebaseApp app = FirebaseApp.DefaultInstance;
+            reference = FirebaseDatabase.DefaultInstance.RootReference;
         });
+
+        userMacAddress = GetMacAddress();
+
+        data = new UserData();
+        data.macAddress = userMacAddress;
+        data.textures = new PartTextures();
+        SaveData();
     }
+
 
     string GetMacAddress()
     {
@@ -93,22 +78,13 @@ public class DatabaseManager : MonoBehaviour
         return result;
     }
 
+
     public void SaveData()
     {
-        DatabaseReference userRef = reference.Child("User").Child(userMacAddress);
-        string json = JsonUtility.ToJson(data);
-        userRef.SetRawJsonValueAsync(json).ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Failed to save user data to Firebase: " + task.Exception);
-            }
-            else
-            {
-                Debug.Log("User data saved successfully.");
-            }
-        });
+        reference.Child("User").Child(userMacAddress);
+        reference.SetRawJsonValueAsync(JsonUtility.ToJson(data));
     }
+
 
     private IEnumerator LoadUserData()
     {
@@ -116,7 +92,7 @@ public class DatabaseManager : MonoBehaviour
         yield return new WaitUntil(() => reference != null);
 
         // Read data for the specified user
-        DatabaseReference userRef = reference.Child("User").Child(userMacAddress);
+        DatabaseReference userRef = reference.Child("user").Child(userMacAddress);
 
         userRef.GetValueAsync().ContinueWithOnMainThread(task =>
         {
@@ -132,12 +108,8 @@ public class DatabaseManager : MonoBehaviour
             {
                 // Deserialize the JSON data into your custom class
                 string jsonData = snapshot.GetRawJsonValue();
-                data = JsonUtility.FromJson<UserData>(jsonData);
-            }
-            else
-            {
-                // If data doesn't exist in the database, create a new UserData object
-                data = new UserData();
+                UserData userData = JsonUtility.FromJson<UserData>(jsonData);
+
             }
         });
     }
