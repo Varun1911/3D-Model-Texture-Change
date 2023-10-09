@@ -70,3 +70,21 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 [Aa]ssets/[Ss]treamingAssets/aa.meta
 [Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Firebase generated
+Firebase/
+FirebaseData/
+FirebaseDataCpp/
+firebase-unity-sdk/
+firebase/
+firebaseapp/
+firebaseanalytics/
+firebaseauth/
+firebasedatabase/
+firebasefirestore/
+firebasefunctions/
+firebaseinvites/
+firebaseconfig/
+firebasemessaging/
+firebaseperformance/
+firebasestorage/
