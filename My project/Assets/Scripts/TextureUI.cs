@@ -37,13 +37,13 @@ public class TextureUI : MonoBehaviour
     {
         //tweening
         float tweenTime = 1f;
-        LeanTween.move(scrollArea, new Vector2(0f, 100f), tweenTime).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(scrollArea, new Vector2(0f, 50f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
-        LeanTween.move(leftButton, new Vector2(60f, 100f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
-        LeanTween.move(leftButton, new Vector2(30f, 100f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
-        LeanTween.move(RightButton, new Vector2(-60f, 100f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
-        LeanTween.move(RightButton, new Vector2(-30f, 100f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
-        LeanTween.move(crossButton, new Vector2(80f, -50f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
+        LeanTween.move(scrollArea, new Vector2(0f, 120f), tweenTime).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.move(scrollArea, new Vector2(0f, 80f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
+        LeanTween.move(leftButton, new Vector2(80f, 100f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
+        LeanTween.move(leftButton, new Vector2(40f, 100f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
+        LeanTween.move(RightButton, new Vector2(-80f, 100f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
+        LeanTween.move(RightButton, new Vector2(-40f, 100f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
+        LeanTween.move(crossButton, new Vector2(90f, -50f), tweenTime).setEase(LeanTweenType.easeInOutCubic);
         LeanTween.move(crossButton, new Vector2(50f, -50f), tweenTime / 3f).setDelay(tweenTime).setEase(LeanTweenType.easeInCubic);
 
 
@@ -55,18 +55,24 @@ public class TextureUI : MonoBehaviour
     {
         //tweening
         float tweenTime = 1f;
-        LeanTween.move(scrollArea, new Vector2(0f, 100f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(scrollArea, new Vector2(0f, -280f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic); 
-        LeanTween.move(leftButton, new Vector2(60f, 100f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(leftButton, new Vector2(-130f, 100f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);        
-        LeanTween.move(RightButton, new Vector2(-60f, 100f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(RightButton, new Vector2(130f, 100f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);
-        LeanTween.move(crossButton, new Vector2(80f, -50f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(crossButton, new Vector2(-130f, -50f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);
+        LeanTween.move(scrollArea, new Vector2(0f, 120f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.move(scrollArea, new Vector2(0f, -350f), tweenTime).setDelay(tweenTime / 3f).setEase(LeanTweenType.easeInCubic).setOnComplete(ResetScrollPanel);
+        LeanTween.move(leftButton, new Vector2(80f, 100f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.move(leftButton, new Vector2(-200f, 100f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);        
+        LeanTween.move(RightButton, new Vector2(-80f, 100f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.move(RightButton, new Vector2(200f, 100f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);
+        LeanTween.move(crossButton, new Vector2(90f, -50f), tweenTime / 3f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.move(crossButton, new Vector2(-200f, -50f), tweenTime).setDelay(tweenTime /3f).setEase(LeanTweenType.easeInCubic);
 
 
         currentPart.DeselectPart();
         OnPartDeselect?.Invoke();
+    }
+
+
+    //separate function so that the panel resets after the animations
+    private void ResetScrollPanel()
+    {
         panelRectTransform.anchoredPosition = Vector2.zero;   //resetting position of scroll rect
     }
 
